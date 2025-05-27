@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eleve o seu Astral</title>
+  <meta name="theme-color" content="#f8d49d" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff9f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+    }
+    .ariel-img {
+      width: 120px;
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+    }
+    .mensagem {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #5b3d27;
+    }
+    .feltroverso {
+      font-size: 0.9rem;
+      color: #c9995d;
+      margin-top: 1rem;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      background-color: #f8d49d;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #f1c27b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="app">
+    <div class="mensagem" id="mensagem">Hoje, tente passar o dia sem julgamentos.</div>
+    <img class="ariel-img" src="https://static.wixstatic.com/media/a5f084_76529ca95c0c4370b6bb314f64c52760~mv2.png" alt="Feltroverso" />
+    <div class="feltroverso">Feltroverso</div>
+    <button onclick="copiarMensagem()">Copiar frase com imagem</button>
+  </div>
+
+  <script>
+    const mensagens = [
+      "1. A solidão pode ser um jardim, se a gente aprender a cultivar flores dentro da gente.",
+      "2. A gente só descobre o valor da nossa própria companhia quando para de correr do silêncio.",
+      "3. Ficar sozinha não é o mesmo que estar vazia. Às vezes é só o coração pedindo um tempo para se escutar.",
+      "4. Quem se ama de verdade nunca está só: carrega dentro do peito a melhor companhia.",
+      "5. Se você não consegue ser gentil consigo hoje, seja apenas sincera: está difícil, e tudo bem.",
+      "6. Autocompaixão é a arte de se acolher até quando não está sendo a sua melhor versão.",
+      "7. Olhe para você com os olhos de quem ama, não de quem julga.",
+      "8. Dê-se o direito de ser humana: imperfeita, mas inteira.",
+      "9. Um limite bem colocado é um abraço que damos em nós mesmas.",
+      "10. Dizer não, às vezes, é o maior sim que damos para a nossa paz.",
+      "11. Colocar limite não afasta quem ama de verdade. Só protege quem já amou demais.",
+      "12. Você pode ser boa sem ser boazinha demais.",
+      "13. Há dias em que a alma parece terra seca. Mas basta uma gota de fé pra florir de novo.",
+      "14. A vida dobra a gente, mas não quebra quando temos raiz.",
+      "15. Tem força que só nasce quando tudo dentro da gente parece desistir.",
+      "16. Resiliência: quando a dor não vira parede, mas porta.",
+      "17. Todo mundo tem algo a ensinar, até quem parece não saber nada.",
+      "18. Quem acha que já sabe tudo, fecha a porta pro milagre do novo.",
+      "19. Aprender com o outro é enxergar com olhos emprestados e descobrir paisagens novas.",
+      "20. A humildade abre caminhos onde o orgulho só vê paredes.",
+      "21. Amar é deixar o coração falar mais alto que o ego.",
+      "22. Quando o amor entra, até o sol parece mais quente e a sombra mais fresca.",
+      "23. Amar quem nos fere não é fraqueza, é libertação.",
+      "24. O amor universal é uma ponte por onde até o impossível aprende a passar.",
+      "25. Ouça o que o silêncio grita. Às vezes, é Deus cochichando um caminho novo.",
+      "26. Fé é continuar andando mesmo sem enxergar o chão.",
+      "27. A intuição é o mapa que o coração desenha quando a razão não sabe o caminho.",
+      "28. A voz de Deus muitas vezes se parece com um sussurro dentro da alma. Escute.",
+      "29. Florescem as coisas que a gente não apressa.",
+      "30. O tempo tem um ritmo diferente do nosso desejo. Mas sempre chega na hora certa.",
+      "31. A pressa tenta roubar o que só a paciência consegue colher.",
+      "32. Paciência não é esperar parado, é confiar em movimento.",
+      "33. Às vezes, o que salva o dia é um café quente e um suspiro de alívio.",
+      "34. A presença cura mais que mil conselhos.",
+      "35. Tem milagre escondido na rotina, é só olhar com olhos de encanto.",
+      "36. Viver de verdade é saber enxergar beleza no que todo mundo chama de comum.",
+      "37. Há sempre um recomeço esperando o momento certo para nascer dentro de você.",
+      "38. Mesmo os cacos sabem se juntar quando o amor cola com cuidado.",
+      "39. Esperança é a arte de acreditar na luz mesmo quando a noite parece não ter fim.",
+      "40. Toda alma sabe como florescer, mesmo depois do inverno mais longo."
+    ];
+
+    function novaMensagem() {
+      const mensagemEl = document.getElementById("mensagem");
+      const nova = mensagens[Math.floor(Math.random() * mensagens.length)];
+      mensagemEl.innerText = nova;
+    }
+
+    function copiarMensagem() {
+      const mensagem = document.getElementById("mensagem").innerText;
+      const textoCopiado = `${mensagem}\n\n— Feltroverso`;
+      navigator.clipboard.writeText(textoCopiado).then(() => {
+        alert("Mensagem copiada! Agora é só colar onde quiser.");
+      });
+    }
+
+    // Mensagem aleatória ao abrir
+    window.onload = novaMensagem;
+  </script>
+
+  <!-- PWA Script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
