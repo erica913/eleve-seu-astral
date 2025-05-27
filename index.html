@@ -6,7 +6,8 @@
   <title>Eleve o seu Astral</title>
   <meta name="theme-color" content="#f8d49d" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icone-192.png" type="image/png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icone-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icone-512.png" />
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -17,7 +18,9 @@
       flex-direction: column;
       padding: 2rem;
       min-height: 100vh;
+      margin: 0;
     }
+
     .card {
       background-color: #ffffff;
       border-radius: 20px;
@@ -27,22 +30,19 @@
       text-align: center;
       position: relative;
     }
-    .ariel-img {
-      width: 120px;
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-    }
+
     .mensagem {
       font-size: 1.2rem;
       margin-bottom: 1rem;
       color: #5b3d27;
     }
+
     .feltroverso {
       font-size: 0.9rem;
       color: #c9995d;
       margin-top: 1rem;
     }
+
     button {
       padding: 0.6rem 1rem;
       font-size: 1rem;
@@ -52,17 +52,26 @@
       cursor: pointer;
       margin-top: 1rem;
     }
+
     button:hover {
       background-color: #f1c27b;
+    }
+
+    .ariel-img {
+      width: 120px;
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
     }
   </style>
 </head>
 <body>
   <div class="card" id="app">
-    <div class="mensagem" id="mensagem">Hoje, tente passar o dia sem julgamentos.</div>
-    <img class="ariel-img" src="https://static.wixstatic.com/media/a5f084_76529ca95c0c4370b6bb314f64c52760~mv2.png" alt="Feltroverso" />
+    <div class="mensagem" id="mensagem">Clique abaixo para começar</div>
+    <img class="ariel-img" src="icone-192.png" alt="Ícone" />
     <div class="feltroverso">Feltroverso</div>
-    <button onclick="copiarMensagem()">Copiar frase com imagem</button>
+    <button onclick="novaMensagem()">Nova frase</button>
+    <button onclick="copiarMensagem()">Copiar frase</button>
   </div>
 
   <script>
@@ -84,56 +93,4 @@
       "15. Tem força que só nasce quando tudo dentro da gente parece desistir.",
       "16. Resiliência: quando a dor não vira parede, mas porta.",
       "17. Todo mundo tem algo a ensinar, até quem parece não saber nada.",
-      "18. Quem acha que já sabe tudo, fecha a porta pro milagre do novo.",
-      "19. Aprender com o outro é enxergar com olhos emprestados e descobrir paisagens novas.",
-      "20. A humildade abre caminhos onde o orgulho só vê paredes.",
-      "21. Amar é deixar o coração falar mais alto que o ego.",
-      "22. Quando o amor entra, até o sol parece mais quente e a sombra mais fresca.",
-      "23. Amar quem nos fere não é fraqueza, é libertação.",
-      "24. O amor universal é uma ponte por onde até o impossível aprende a passar.",
-      "25. Ouça o que o silêncio grita. Às vezes, é Deus cochichando um caminho novo.",
-      "26. Fé é continuar andando mesmo sem enxergar o chão.",
-      "27. A intuição é o mapa que o coração desenha quando a razão não sabe o caminho.",
-      "28. A voz de Deus muitas vezes se parece com um sussurro dentro da alma. Escute.",
-      "29. Florescem as coisas que a gente não apressa.",
-      "30. O tempo tem um ritmo diferente do nosso desejo. Mas sempre chega na hora certa.",
-      "31. A pressa tenta roubar o que só a paciência consegue colher.",
-      "32. Paciência não é esperar parado, é confiar em movimento.",
-      "33. Às vezes, o que salva o dia é um café quente e um suspiro de alívio.",
-      "34. A presença cura mais que mil conselhos.",
-      "35. Tem milagre escondido na rotina, é só olhar com olhos de encanto.",
-      "36. Viver de verdade é saber enxergar beleza no que todo mundo chama de comum.",
-      "37. Há sempre um recomeço esperando o momento certo para nascer dentro de você.",
-      "38. Mesmo os cacos sabem se juntar quando o amor cola com cuidado.",
-      "39. Esperança é a arte de acreditar na luz mesmo quando a noite parece não ter fim.",
-      "40. Toda alma sabe como florescer, mesmo depois do inverno mais longo."
-    ];
-
-    function novaMensagem() {
-      const mensagemEl = document.getElementById("mensagem");
-      const nova = mensagens[Math.floor(Math.random() * mensagens.length)];
-      mensagemEl.innerText = nova;
-    }
-
-    function copiarMensagem() {
-      const mensagem = document.getElementById("mensagem").innerText;
-      const textoCopiado = `${mensagem}\n\n— Feltroverso`;
-      navigator.clipboard.writeText(textoCopiado).then(() => {
-        alert("Mensagem copiada! Agora é só colar onde quiser.");
-      });
-    }
-
-    // Mensagem aleatória ao abrir
-    window.onload = novaMensagem;
-  </script>
-
-  <!-- Registro do Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker registrado com sucesso!'))
-        .catch(err => console.error('Erro ao registrar o Service Worker:', err));
-    }
-  </script>
-</body>
-</html>
+      "18. Quem acha que já sabe tudo, fecha a porta pro milag
