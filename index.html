@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eleve o seu Astral</title>
   <meta name="theme-color" content="#f8d49d" />
   <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icone-192.png" type="image/png" />
   <style>
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -16,7 +17,6 @@
       flex-direction: column;
       padding: 2rem;
       min-height: 100vh;
-      margin: 0;
     }
     .card {
       background-color: #ffffff;
@@ -51,7 +51,6 @@
       border-radius: 10px;
       cursor: pointer;
       margin-top: 1rem;
-      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #f1c27b;
@@ -61,12 +60,7 @@
 <body>
   <div class="card" id="app">
     <div class="mensagem" id="mensagem">Hoje, tente passar o dia sem julgamentos.</div>
-    <img 
-      class="icone-192.png" 
-      src="https://static.wixstatic.com/media/a5f084_76529ca95c0c4370b6bb314f64c52760~mv2.png" 
-      alt="Feltroverso" 
-      crossorigin="anonymous" 
-    />
+    <img class="ariel-img" src="https://static.wixstatic.com/media/a5f084_76529ca95c0c4370b6bb314f64c52760~mv2.png" alt="Feltroverso" />
     <div class="feltroverso">Feltroverso</div>
     <button onclick="copiarMensagem()">Copiar frase com imagem</button>
   </div>
@@ -129,14 +123,16 @@
       });
     }
 
+    // Mensagem aleatória ao abrir
     window.onload = novaMensagem;
   </script>
 
+  <!-- Registro do Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('Service Worker registrado com sucesso!'))
-        .catch(e => console.error('Erro ao registrar Service Worker:', e));
+        .catch(err => console.error('Erro ao registrar o Service Worker:', err));
     }
   </script>
 </body>
